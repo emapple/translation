@@ -22,6 +22,7 @@ class Application(tk.Frame):
         self.botframe.pack(side='bottom', fill='both')
         self.topframe.configure(bg=self.bgcolor)
         self.botframe.configure(bg=self.bgcolor)
+        self.master.bind('<Return>', self.translate_word)
 
         self.l1 = tk.Label(self.topframe, text='Word to translate:',
                 font='Arial 18')
@@ -63,7 +64,7 @@ class Application(tk.Frame):
         #self.lang_check[lang][1].pack(side='top')
         #self.lang_check[lang][2].pack(side='right')
 
-    def translate_word(self):
+    def translate_word(self, event=None):
         translations = [self.tr_obj.translate(self.entry.get(), dest=lang)
                 if self.lang_check[lang][0].get()
                 else -1
