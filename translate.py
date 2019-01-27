@@ -31,7 +31,7 @@ class Application(tk.Frame):
         self.srcmenu.configure(bg=self.textcolor2, activebackground=self.textcolor1,
                 font='Arial 18')
         self.srcmenu['menu'].configure(bg=self.textcolor1, font='Arial 18')
-        self.srcmenu.grid(row=0, column=0, ipadx=50, padx=20)
+        self.srcmenu.grid(row=0, column=0, ipadx=50, padx=20, pady=10)
         self.l1 = tk.Label(self.topframe, text='word to translate:',
                 font='Arial 18')
         self.l1.grid(row=0, column=1)#, ipadx=50)
@@ -71,12 +71,9 @@ class Application(tk.Frame):
         self.lang_menu[-1].append(tk.Text(frame, font='Arial 18', width=60,
             bg=self.textcolor1))
         
-        self.lang_menu[-1][1].grid(row=len(self.lang_menu), column=0)
+        self.lang_menu[-1][1].grid(row=len(self.lang_menu), column=0, padx=5)
         self.lang_menu[-1][2].grid(row=len(self.lang_menu), column=1)
-        #self.lang_check[lang][1].pack(side='top')
-        #self.lang_check[lang][2].pack(side='right')
         self.botframe.rowconfigure(len(self.lang_menu), weight=1)
-        self.lang_menu[-1][1].configure(bg=self.bgcolor)
 
     def translate_word(self, event=None):
         translations = [self.tr_obj.translate(self.entry.get(), dest=self.lang_menu[i][0].get(), 
