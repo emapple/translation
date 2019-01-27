@@ -46,7 +46,7 @@ class Application(tk.Frame):
         self.b1.configure(bg=self.bgcolor)
 
         self.lang_menu = []
-        for lang in self.lang_list[1:5]:
+        for lang in self.lang_list[1:4]:
             self.make_menu(self.botframe, lang)
         #self.make_checkbox(self.botframe, 'it')
         #self.make_checkbox(self.botframe, 'fr')
@@ -54,9 +54,10 @@ class Application(tk.Frame):
         #for lang in self.lang_check:
         #    self.lang_check[lang][1].pack()
         
-        for i in range(len(self.lang_menu)):
-            self.botframe.rowconfigure(i+1, weight=1)
-            self.lang_menu[i][1].configure(bg=self.bgcolor)
+        self.b2 = tk.Button(self.topframe, text='Add language', command=lambda: self.make_menu(self.botframe, 'en'),
+                font='Arial 18')
+        self.b2.grid(row=0, column=4, padx=30)
+        self.b2.configure(bg=self.bgcolor)
 
     def make_menu(self, frame, lang):
         self.lang_menu.append([tk.StringVar()])
@@ -74,6 +75,8 @@ class Application(tk.Frame):
         self.lang_menu[-1][2].grid(row=len(self.lang_menu), column=1)
         #self.lang_check[lang][1].pack(side='top')
         #self.lang_check[lang][2].pack(side='right')
+        self.botframe.rowconfigure(len(self.lang_menu), weight=1)
+        self.lang_menu[-1][1].configure(bg=self.bgcolor)
 
     def translate_word(self, event=None):
         translations = [self.tr_obj.translate(self.entry.get(), dest=self.lang_menu[i][0].get(), 
