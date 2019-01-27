@@ -54,7 +54,7 @@ class Application(tk.Frame):
         #for lang in self.lang_check:
         #    self.lang_check[lang][1].pack()
         
-        self.b2 = tk.Button(self.topframe, text='Add language', command=lambda: self.make_menu(self.botframe, 'en'),
+        self.b2 = tk.Button(self.topframe, text='Add language', command=lambda: self.make_menu(self.botframe, self.lang_list[min(len(self.lang_list)-1, len(self.lang_menu)+1)]),
                 font='Arial 18')
         self.b2.grid(row=0, column=4, padx=30)
         self.b2.configure(bg=self.bgcolor)
